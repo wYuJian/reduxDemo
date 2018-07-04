@@ -3,11 +3,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
-import {composeWithDevTools} from 'redux-devtools-extension';
-import {Provider} from 'react-redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { Provider } from 'react-redux';
 import logger from 'redux-logger';
-import {createStore,applyMiddleware} from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import Cookies from './Global/index';
 import rootReducers from './reducers';
+var zhang = {
+  name: "zhang",
+  age: 23,
+  height: "178cm",
+  weight: "66kg"
+}
+// 设置一条完整的cookie
+Cookies.Cookies.setAll('zhang',zhang,(10));
+console.log(Cookies.Cookies.getAll('zhang'));
 const store = createStore(
     rootReducers,
     composeWithDevTools(
@@ -16,8 +26,8 @@ const store = createStore(
 );
 
 ReactDOM.render(
-    <Provider store = {store}>
+    <Provider store={store}>
         <App />
     </Provider>,
-document.getElementById('root'));
+    document.getElementById('root'));
 registerServiceWorker();
