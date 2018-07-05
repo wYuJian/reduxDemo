@@ -7,17 +7,17 @@ const reminder = (action) => {
         id: parseInt(Math.random() * 10)
     }
 }
-const reminders = (state = read_cookie('reminder') || [], action = {}) => {
+const reminders = (state = JSON.parse(sessionStorage.getItem('reminder')) || [], action = {}) => {
     let reminders = null;
     switch (action.type) {
         case ADD_REMINDER:
             reminders = [
                 ...state, reminder(action)
             ]
-            bake_cookie('reminder', reminders)
+        sessionStorage.setItem('reminder', JSON.stringify(reminders))
             return reminders
         default: return state;
     }
 }
 
-export default reminders
+export default reminders 

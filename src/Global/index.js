@@ -19,6 +19,7 @@ const Cookies = {
        *   eg : SubCookieUtil.setAll("info", { name : "zhang", age : 23});
        **/
     setAll: function (name, subCookies, expires, domain, path, secure) {
+        console.log(expires)
         var cookieText = "", subName, cookieParts = [];
         cookieText += encodeURIComponent(name) + "=";
         for (subName in subCookies) {
@@ -28,6 +29,7 @@ const Cookies = {
             cookieText += cookieParts.join("&");
             if (expires instanceof Date) {
                 cookieText += "; expires=" + expires.toGMTString();
+                console.log(cookieText)
             }
             if (path) {
                 cookieText += "; path=" + path;

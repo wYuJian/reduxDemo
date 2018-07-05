@@ -11,7 +11,7 @@ class App extends Component {
         };
     }
     addReminder() {
-        
+
         this.props.addReminder(this.state.text)
         // console.log(this.props)
     }
@@ -22,12 +22,11 @@ class App extends Component {
         //     console.log(item.text)
         // })
         const { reminders } = this.props;
-        console.log(reminders)
-
+        // console.log(JSON.parse(reminders))
         return (
             <ul>
                 {
-                    reminders.map((reminder,index) => {
+                    reminders.map((reminder, index) => {
                         // console.log(reminder)
                         return (
                             <li key={index}>

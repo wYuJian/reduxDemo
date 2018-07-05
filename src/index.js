@@ -15,8 +15,10 @@ var zhang = {
   height: "178cm",
   weight: "66kg"
 }
+let expires =new Date();
+sessionStorage.setItem('zhang', JSON.stringify(zhang));
 // 设置一条完整的cookie
-Cookies.Cookies.setAll('zhang',zhang,(10));
+Cookies.Cookies.setAll('zhang', zhang,new Date(60*60));
 console.log(Cookies.Cookies.getAll('zhang'));
 const store = createStore(
     rootReducers,
